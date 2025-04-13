@@ -99,6 +99,7 @@ enum DivInstrumentType: unsigned short {
   DIV_INS_SUPERVISION=64,
   DIV_INS_UPD1771C=65,
   DIV_INS_SID3=66,
+  DIV_INS_KITTY=67,
   DIV_INS_MAX,
   DIV_INS_NULL
 };
@@ -854,6 +855,17 @@ struct DivInstrumentPowerNoise {
     octave(0) {}
 };
 
+struct DivInstrumentKitty {
+  unsigned char octave;
+
+  bool operator==(const DivInstrumentKitty& other);
+  bool operator!=(const DivInstrumentKitty& other) {
+    return !(*this==other);
+  }
+  DivInstrumentKitty():
+    octave(0) {}
+};
+
 struct DivInstrumentSID2 {
   unsigned char volume;
   unsigned char mixMode;
@@ -993,6 +1005,7 @@ struct DivInstrumentPOD {
   DivInstrumentPowerNoise powernoise;
   DivInstrumentSID2 sid2;
   DivInstrumentSID3 sid3;
+  DivInstrumentKitty kitty;
 
   DivInstrumentPOD() :
     type(DIV_INS_FM) {

@@ -1574,6 +1574,11 @@ void FurnaceGUI::initSystemPresets() {
       )
     }
   );
+  ENTRY(
+    _("KITTY"), {
+      CH(DIV_SYSTEM_KITTY, 1.0f, 0, "")
+    }
+  );
   CATEGORY_END;
 
   CATEGORY_BEGIN(_("Arcade systems"),_("INSERT COIN"));
@@ -3669,6 +3674,11 @@ void FurnaceGUI::initSystemPresets() {
   ENTRY(
     _("Watara Supervision"), {
       CH(DIV_SYSTEM_SUPERVISION, 1.0f, 0, "")
+    }
+  );
+  ENTRY(
+    _("KITTY"), {
+      CH(DIV_SYSTEM_KITTY, 1.0f, 0, "")
     }
   );
   CATEGORY_END;

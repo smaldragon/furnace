@@ -323,6 +323,10 @@ bool DivInstrumentPowerNoise::operator==(const DivInstrumentPowerNoise& other) {
   return _C(octave);
 }
 
+bool DivInstrumentKitty::operator==(const DivInstrumentKitty& other) {
+  return _C(octave);
+}
+
 bool DivInstrumentSID2::operator==(const DivInstrumentSID2& other) {
   return (
     _C(volume) &&
@@ -1439,6 +1443,8 @@ void DivInstrument::putInsData2(SafeWriter* w, bool fui, const DivSong* song, bo
       case DIV_INS_UPD1771C:
         break;
       case DIV_INS_MAX:
+        break;
+      case DIV_INS_KITTY:
         break;
       case DIV_INS_NULL:
         break;

@@ -2713,6 +2713,41 @@ bool FurnaceGUI::drawSysConf(int chan, int sysPos, DivSystem type, DivConfig& fl
       }
       break;
     }
+    case DIV_SYSTEM_KITTY: {
+      int clockSel=flags.getInt("clockSel",0);
+      int noiseClock=flags.getInt("noiseClock",50);
+
+      ImGui::Text(_("Clock Rate (Channel 4):"));
+
+      ImGui::Indent();
+      if (ImGui::RadioButton(_("PAL"),clockSel==0)) {
+        clockSel=0;
+        altered=true;
+      }
+      if (ImGui::RadioButton(_("NTSC/VGA"),clockSel==1)) {
+        clockSel=1;
+        altered=true;
+      }
+      if (ImGui::RadioButton(_("Custom"),clockSel==2)) {
+        clockSel=2;
+        altered=true;
+      }
+      if (ImGui::InputInt("Noise (Hz)",&noiseClock,10,100)) {
+        if (noiseClock<20)    noiseClock=20;
+        if (noiseClock>20000) noiseClock=MAX_CUSTOM_CLOCK;
+        altered=true;
+      }
+      
+      ImGui::Unindent();
+
+      if (altered) {
+        e->lockSave([&]() {
+          flags.set("clockSel",clockSel);
+          flags.set("noiseClock",noiseClock);
+        });
+      }
+      break;
+    }
     default: {
       bool sysPal=flags.getInt("clockSel",0);
 

@@ -2328,6 +2328,21 @@ void DivEngine::registerSystems() {
     c64PostEffectHandlerMap
   );
 
+  sysDefs[DIV_SYSTEM_KITTY]=new DivSysDef(
+    _("KITTY"), NULL, 0xf6, 0, 4, false, true, 0, false, 0, 0, 0,
+    _("an homebrew computer featuring 4 stereo channels of 8x1 \"wavetables\""),
+    {_("Channel 1"), _("Channel 2"), _("Channel 3"), _("Channel 4")},
+    {"CH1", "CH2", "CH3", "CH4"},
+    {DIV_CH_PULSE, DIV_CH_PULSE, DIV_CH_PULSE, DIV_CH_PULSE},
+    {DIV_INS_KITTY, DIV_INS_KITTY, DIV_INS_KITTY, DIV_INS_KITTY},
+    {},
+    {},
+    {
+      {0x10, {DIV_CMD_WAVE, _("10xx: Set waveform")}},
+    }
+  );
+
+
   sysDefs[DIV_SYSTEM_DUMMY]=new DivSysDef(
     _("Dummy System"), NULL, 0xfd, 0, 8, false, true, 0, false, 0, 0, 0,
     _("this is a system designed for testing purposes."),
